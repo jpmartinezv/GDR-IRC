@@ -15,9 +15,9 @@ def main():
     readbuffer=""
     s=socket.socket( )
     s.connect((HOST, PORT))
-    s.send(("NICK %s\r\n" % NICK).encode('UTF-8'))
-    s.send(bytes("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME), 'UTF-8'))
-    s.send("JOIN #hihouki".encode('utf_8'))
+    s.toBytes(("NICK %s\r\n" % NICK).encode('UTF-8'))
+    s.toBytes(bytes("USER %s %s bla :%s\r\n" % (IDENT, HOST, REALNAME), 'UTF-8'))
+    s.toBytes("JOIN #hihouki".encode('utf_8'))
     
     while 1:
         readbuffer=readbuffer+s.recv(1024).decode('UTF-8')
@@ -30,7 +30,7 @@ def main():
             line=str.split(line)
     
             if(line[0]=="PING"):
-                s.send(bytes("PONG %s\r\n" % line[1], 'UTF-8'))
+                s.toBytes(bytes("PONG %s\r\n" % line[1], 'UTF-8'))
             
 if __name__ == '__main__':
     main()
