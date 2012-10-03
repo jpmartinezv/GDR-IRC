@@ -4,7 +4,7 @@ Created on 2012/10/02
 @author: shirou
 '''
 
-from lib.ircConnection import Client
+from lib.ircLib import Client
 
 def main():
     HOST="irc.rizon.net"
@@ -12,7 +12,6 @@ def main():
     NICK="gdrb"
     IDENT="gdrirc"
     REALNAME="GDR_IRC"
-    readbuffer=""
     print("aaaa")
     client = Client()
     client.connect((HOST, PORT))
